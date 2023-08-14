@@ -1,3 +1,8 @@
+ul, li {
+  text-decoration: none;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
