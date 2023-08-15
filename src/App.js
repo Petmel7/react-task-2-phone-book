@@ -34,7 +34,6 @@ class App extends Component {
     event.preventDefault()
 
     const { contacts, name, number } = this.state;
-    // console.log(this.state)
 
     const contact = { 
       id: shortid.generate(),
@@ -51,7 +50,6 @@ class App extends Component {
 }
 
   foneBookChange = event => {
-    // console.log(event.currentTarget.value)
     const { name, value, number } = event.currentTarget;
 
     this.setState({
@@ -61,13 +59,10 @@ class App extends Component {
   }
 
   filterChange = event => {
-    // this.setState({filter: event.carrentTarget.value})
-    const { name, value } = event.currentTarget;
+  this.setState({ filter: event.currentTarget.value });
+}
 
-    this.setState({ [name]: value });
-  }
-/////////////////////////
-  getVisibleTodos = () => {
+  getVisibleСontacts = () => {
 
     const { filter, contacts } = this.state;
     const normalizeFilter = filter.toLowerCase()
@@ -77,9 +72,9 @@ class App extends Component {
   }
 
   render() {
-    const { contacts, name, number, filter } = this.state;
+    const {  name, number, filter } = this.state;
 
-    const visibleTodosFilter = this.getVisibleTodos();
+    const visibleСontactsFilter = this.getVisibleСontacts();
 
     return (
       <div className="App">
@@ -118,28 +113,22 @@ class App extends Component {
           <label>
             Search
             <input type='text'
-              // value={filter}
-              // onChange={this.filterChange}
-              // contacts={visibleTodosFilter}
-
-              
-                name='filter'
-                value={this.state.filter}
-                onChange={this.filterChange}
+              value={filter}
+              onChange={this.filterChange}
             />
           </label>
 
           <ul>
-            {contacts.map(({ id, name, number, filter, completed }) => (
+            {visibleСontactsFilter.map(({ id, name, number }) => (
                 <li key={id}>
                   <p>{name}:</p>
                   <p>{number}</p>
-                  <p>{this.state.filter}</p>
                 </li>
             ))}
             
-        </ul>
-          </form>
+          </ul>
+          
+        </form>
       </div>
     );
   }
