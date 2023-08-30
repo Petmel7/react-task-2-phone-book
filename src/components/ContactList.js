@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContactList = ({ contacts, DeleteContacts }) => (
+const ContactList = ({ contacts, DeleteContacts,  }) => (
   <ul className="name-number">
     {contacts.map(({ id, name, number }) => (
       <li key={id}>
