@@ -1,48 +1,28 @@
-import { Component } from "react";
+import { useState } from "react";
 import '../components/Statics.css';
 
-export class Statics extends Component {
+export default function Statics() {
+    const [visible, setVisible] = useState(false)
+    const [good, setGood] = useState(0)
+    const [neutral, setNeutral] = useState(0)
+    const [bad, setBad] = useState(0)
 
-    state = {
-        visible: false,
-        good: 0,
-        neutral: 0,
-        bad: 0,
-    }
+    const plusActivity = (activity) => {
+        setVisible(prevState => ({
+        ...prevState,
+        [activity]: prevState[activity] + 1,
+        visible: true,
+    }));
+}
     
-    // plusGood = () => {
-    //     this.setState((prevState) => ({
-    //     good: prevState.good + 1,
-    // }))
-    // };
-    
-    // plusNeutral = () => {
-    //     this.setState(prevState => ({
-    //         neutral: prevState.neutral + 1,
-    //     }))
-    // }
+//     const plusActivity = (activity) => {
+//     setVisible(prevState => ({
+//         ...prevState,
+//         [activity]: prevState[activity] + 1,
+//     }));
+// };
 
-    // plusBad = () => {
-    //     this.setState(prevState => ({
-    //         bad: prevState.bad + 1,
-    //     }))
-    // }
 
-    // toggle = () => {
-    //     this.setState(prevState => ({
-    //         visible: !prevState.visible
-    //     }))
-    // }
-
-    plusActivity = (activity) => {
-        this.setState(prevState => ({
-            visible: true,
-            [activity]: prevState[activity] + 1,
-    }))
-    }
-
-    render() {
-        const { good, neutral, bad } = this.state;
         const total = good + neutral + bad;
         const positivePercentage = total > 0 ? (good/total) * 100 : 0;
 
@@ -52,22 +32,22 @@ export class Statics extends Component {
 
                 <div className="button">
                     <button className="buttonGood"
-                        onClick={() =>this.plusActivity('good')}>
+                        onClick={() => plusActivity(setGood(good))}>
                         Good
                     </button>
                     <button className="buttonNeutral"
-                        onClick={() => this.plusActivity('neutral')}>
+                        onClick={() => plusActivity(setNeutral(neutral))}>
                         Neutral
                     </button>
                     <button className="buttonBad"
-                        onClick={() => this.plusActivity('bad')}>
+                        onClick={() => plusActivity(setBad(bad))}>
                         Bad
                     </button>
                 </div>
                 
                 <h2>Statics</h2>
 
-                {this.state.visible ?
+                {visible ?
                     
                     <ul className="statics">
                         <li>Good: <span>{good}</span></li>
@@ -83,4 +63,4 @@ export class Statics extends Component {
             </>
         )
     }
-}
+
