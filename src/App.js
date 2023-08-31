@@ -16,59 +16,6 @@ function App() {
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
 
-  // componentDidMount() {
-  //   const contacts = localStorage.getItem('contacts')
-  //   const parsedContacts = JSON.parse(contacts)
-
-  //   if (parsedContacts) {
-  //     this.setState({ contacts: parsedContacts });
-  //   }
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.contacts !== prevState.contacts) {
-  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-  //   }
-  // }
-
-  
-  // useEffect(() => {
-  //   const contacts = localStorage.getItem('contacts')
-  //   const parsedContacts = JSON.parse(contacts)
-
-  //   if (parsedContacts) {
-  //     setContacts(parsedContacts);
-  //   }
-  
-  //   if (contacts !== setContacts(contacts)) {
-  //     localStorage.setItem('contacts', JSON.stringify(contacts))
-  //   }
-  //   }, [])
-
-  // const submitPhoneBook = event => {
-  //   event.preventDefault();
-
-  //   const existingContact = contacts.find(contact =>
-  //     contact.name === name);
-  //       if (existingContact) {
-  //         alert(`This name ${name} already exists`)
-  //           return
-  //   }
-
-  //   const contact = {
-  //     id: shortid.generate(),
-  //     name: name,
-  //     number: number,
-  //     completed: false
-  //   };
-
-  //   setContacts([...contacts, contact]);
-  //   setName('');
-  //   setNumber('');
-    
-  //   localStorage.setItem('contacts', JSON.stringify([...contacts, contact]));
-  // }
-
   useEffect(() => {
   const contacts = localStorage.getItem('contacts');
   const parsedContacts = JSON.parse(contacts);
@@ -105,6 +52,7 @@ const submitPhoneBook = event => {
 
   const foneBookChange = event => {
     setName(event.currentTarget.value)
+    ///
   };
 
   const filterChange = event => {
@@ -130,7 +78,6 @@ const getVisibleСontacts = () => {
     return [];
   }
 };
-
 
   const DeleteContacts = contactId => {
   setContacts(prevContacts =>
