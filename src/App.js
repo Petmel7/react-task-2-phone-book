@@ -23,6 +23,17 @@ function App() {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
+  // useEffect(() => {
+  //   const storedContacts = JSON.parse(localStorage.getItem("contacts")) ?? [];
+  //   if (Array.isArray(storedContacts)) {
+  //     storedContacts.forEach((contact) => setContacts(contact));
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("contacts", JSON.stringify(contacts));
+  // }, [contacts]);
+
   const submitPhoneBook = event => {
     event.preventDefault();
 
